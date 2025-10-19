@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Carta para Mis Amigos</title>
+    <!-- Usando una fuente más caligráfica para la carta -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos generales y de la carta */
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 1s ease;
+        }
+        .letter-content {
+            font-family: 'Caveat', cursive;
+            font-size: 1.75rem;
+            line-height: 2.2rem;
+            color: #333;
+            opacity: 0;
+            transition: opacity 0.8s 1.5s ease-in-out;
+        }
+        
+        /* Ocultar la barra de scroll para una apariencia más limpia */
+        .letter-content::-webkit-scrollbar { display: none; }
+        .letter-content { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Estilos de la animación del sobre */
+        .envelope-wrapper {
+            transition: transform 1s ease-in-out;
+        }
+        .flap {
+            transform-origin: top;
+            transition: transform 0.7s ease-in-out;
+        }
+        .envelope-wrapper.open .flap {
+            transform: rotateX(-180deg);
+        }
+        .letter {
+            transform-origin: top;
+            transition: transform 1s 0.5s ease-in-out, box-shadow 1s 0.5s ease-in-out;
+            box-shadow: 0 0 0 rgba(0,0,0,0);
+            transform: translateY(0) scale(1);
+        }
+        .envelope-wrapper.open .letter {
+            transform: translateY(-230px) scale(1.1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        .envelope-wrapper.open .letter-content {
+            opacity: 1;
+        }
+
+        /* Animación para el texto de instrucción */
+        #clickInstruction {
+            transition: opacity 0.5s ease-out;
+        }
+    </style>
+</head>
+<body id="body" class="bg-black flex items-center justify-center min-h-screen overflow-hidden">
+
+    <div id="envelopeWrapper" class="envelope-wrapper relative cursor-pointer" style="perspective: 1000px;" onclick="openLetter()">
+        
+        <!-- Texto de instrucción para hacer clic -->
+        <div id="clickInstruction" class="absolute bottom-full mb-4 w-full text-center">
+            <p class="text-white/80 text-lg animate-pulse">Haz clic para abrir</p>
+        </div>
+
+        <!-- Sobre (parte trasera) -->
+        <div class="back bg-[#f0e8d9] w-[320px] h-[220px] md:w-[400px] md:h-[250px] rounded-lg shadow-lg absolute top-0 left-0"></div>
+
+        <!-- Carta -->
+        <div class="letter bg-white w-[300px] h-[200px] md:w-[380px] md:h-[230px] absolute top-[10px] left-[10px] md:top-[10px] md:left-[10px] rounded-md flex items-center justify-center overflow-hidden">
+            <div class="letter-content p-6 h-full w-full overflow-y-auto text-center">
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-gray-700">Para mis grandes amigos: Lucas, Gabriel, Bobby y Juan,</h3>
+                <p class="mb-3">
+                    Escribo esto para recordarles lo increíblemente afortunado que soy por tenerlos. La amistad es ese hilo invisible que, sin atar, nos mantiene unidos en las buenas y en las malas. Es un refugio, una fiesta constante, y ustedes son la mejor definición de ello.
+                </p>
+                <p class="mb-3">
+                    Cada vez que nos juntamos, el mundo se detiene y solo existen las risas. Esas partidas de cartas son legendarias, momentos en los que me olvido de todo y simplemente disfruto. ¡Me cago de la risa con ustedes!
+                </p>
+                <p class="mb-3">
+                    <strong>Lucas,</strong> hermano, te deseo toda la suerte del universo con esa chica. Que se dé cuenta pronto del tipazo que tiene al lado y deje de verte solo como su "único amigo hombre". ¡Tú puedes!
+                </p>
+                <p class="mb-3">
+                    <strong>Gabriel,</strong> qué orgullo verte crecer en el ajedrez. Tu progreso es una locura y es un placer ver tu mente en acción. ¡Te deseo lo mejor en cada partida, campeón!
+                </p>
+                <p class="mb-3">
+                    <strong>Bobby,</strong> mi querido amigo, por el amor de dios... ¡no seas rata! La vida es para disfrutarla, así que gasta un poco de plata de vez en cuando, que para eso está. ¡Te queremos igual, roedor!
+                </p>
+                 <p class="mb-3">
+                    <strong>Juan,</strong> no tengo dudas de que el día de mañana vas a estar inaugurando tu propia sucursal de Coca-Cola Zero. Tu visión y tu empuje son de otro nivel. ¡Guárdame un puesto!
+                </p>
+                 <p class="mb-3">
+                    Para terminar, un pequeño consejo sobre el amor, ese otro gran motor: <strong>"El amor más fuerte es el que puede mostrar su fragilidad"</strong>. Permítanse ser vulnerables, porque ahí es donde reside la verdadera conexión.
+                </p>
+                <p class="text-right mt-6 font-bold text-gray-600">
+                    Con todo mi cariño,<br>Martín
+                </p>
+                <!-- 
+                  ****************************************************************************
+                  *** PASO FINAL: PEGA AQUÍ EL ENLACE DIRECTO DE TU IMAGEN ***
+                  ****************************************************************************
+                  Sube tu foto a un servicio como https://imgbb.com/ y copia el "Enlace directo".
+                  Debe lucir algo como: https://i.ibb.co/..../unnamed.jpg
+                  Reemplaza el texto de abajo "PEGA_AQUI_EL_ENLACE_DIRECTO_DE_TU_IMAGEN" con tu enlace.
+                -->
+                <img src="https://cdn.discordapp.com/attachments/1429320350906318981/1429320457282256906/unnamed.jpg?ex=68f5b5e8&is=68f46468&hm=d6c0e015f1e646cad8e082266ef1d3b2b47f2fca469e4306a43e464890da6c13&" alt="Foto de los amigos" class="mt-6 rounded-lg shadow-md mx-auto w-full max-w-[250px] h-auto"/>
+            </div>
+        </div>
+
+        <!-- Solapa del sobre -->
+        <div class="flap bg-gradient-to-b from-[#d4cbbd] to-[#f0e8d9] w-[320px] h-[110px] md:w-[400px] md:h-[125px]" style="clip-path: polygon(0 0, 100% 0, 50% 100%);"></div>
+        
+        <!-- Sobre (parte delantera) -->
+        <div class="front bg-[#f0e8d9] w-[320px] h-[220px] md:w-[400px] md:h-[250px] rounded-lg shadow-lg absolute top-0 left-0" style="clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);"></div>
+    </div>
+
+    <script>
+        let isOpen = false;
+        function openLetter() {
+            if (isOpen) return;
+            isOpen = true;
+            
+            const envelopeWrapper = document.getElementById('envelopeWrapper');
+            const body = document.getElementById('body');
+            const instruction = document.getElementById('clickInstruction');
+            
+            // Ocultar el texto de instrucción
+            if (instruction) {
+                instruction.style.opacity = '0';
+            }
+            
+            envelopeWrapper.classList.add('open');
+            envelopeWrapper.style.cursor = 'default';
+            
+            // Transición para alejar el sobre y cambiar el fondo
+            setTimeout(() => {
+                envelopeWrapper.style.transform = 'scale(0.8)';
+                body.classList.remove('bg-black');
+                body.classList.add('bg-gray-200');
+            }, 1000);
+
+            // Hacer que la carta ocupe más espacio en la pantalla
+            setTimeout(() => {
+                const letter = document.querySelector('.letter');
+                const letterContent = document.querySelector('.letter-content');
+                
+                letter.style.transition = 'all 0.8s ease-in-out';
+                letter.style.width = '90vw';
+                letter.style.height = '80vh';
+                letter.style.maxWidth = '600px';
+                letter.style.position = 'fixed';
+                letter.style.top = '50%';
+                letter.style.left = '50%';
+                letter.style.transform = 'translate(-50%, -50%)';
+                letter.style.zIndex = '50';
+                
+                // Asegurarse de que el scroll comience desde arriba
+                letterContent.scrollTop = 0;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
